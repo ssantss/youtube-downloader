@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+/frontend/node_modules/
+/backend/venv/
+/backend/.venv/
+__pycache__/
+*.py[cod]
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Build
+/frontend/dist/
+/frontend/build/
+/frontend/.svelte-kit/
+.vercel
+.output
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# System
+.DS_Store
+Thumbs.db
+*.log
+
+# Temp files
+*.mp4
+*.webm
+*.m4a
+*.part
+*.temp
+/backend/temp_downloads/
+/backend/.yt_downloader_cache/
