@@ -34,8 +34,8 @@ make run
 
 The application will be available at:
 
-- Frontend: http://localhost:5173
-- Backend: http://localhost:5270
+- Frontend: http://localhost:5270
+- Backend: http://localhost:5173
 
 ## Browser Integration
 
@@ -55,15 +55,23 @@ userscript/   # YouTube integration script
 
 - Start frontend development server:
 
+For development, you can run the frontend separately:
+
 ```bash
 cd frontend && npm run dev
 ```
 
-- Start backend development server:
+This will run the frontend on http://localhost:5270
+
+Run the backend server:
 
 ```bash
 cd backend && python main.py
 ```
+
+This will run the API on http://localhost:5173
+
+For production, just use `make run` which will serve the frontend through the backend.
 
 ## License
 

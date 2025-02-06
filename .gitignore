@@ -7,9 +7,9 @@ __pycache__/
 *.py[cod]
 
 # Environment
-.env
-.env.*
-!.env.example
+# .env
+# .env.*
+# !.env.example
 
 # Build
 /frontend/dist/
