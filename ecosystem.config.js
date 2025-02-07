@@ -2,8 +2,8 @@ module.exports = {
   apps: [
     {
       name: 'yt-downloader-backend',
-      script: 'backend/main.py',
-      interpreter: '/home/santiago/code/youtube-downloader/backend/venv/bin/python3',
+      script: './start-backend.sh',
+      interpreter: '/bin/bash',
       env: {
         PORT: 8765,
         NODE_ENV: 'production'
