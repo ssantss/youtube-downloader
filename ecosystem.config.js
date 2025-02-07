@@ -2,12 +2,8 @@ module.exports = {
   apps: [
     {
       name: 'yt-downloader-backend',
-      script: './start-backend.sh',
-      interpreter: '/bin/bash',
-      env: {
-        PORT: 8765,
-        NODE_ENV: 'production'
-      },
+      script: 'make',
+      args: 'run-backend',
       watch: false,
       autorestart: true,
       max_memory_restart: '1G'

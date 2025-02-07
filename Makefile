@@ -44,6 +44,8 @@ run: kill
 	@echo "📝 Backend: Ok"
 	@trap 'make kill' INT; wait
 
+run-backend:
+	cd $(BACKEND_DIR) && $(VENV_ACTIVATE) && $(PYTHON) main.py
 clean:
 	@echo "🧹 Limpiando archivos temporales..."
 	make kill
