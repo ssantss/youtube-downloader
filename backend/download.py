@@ -4,6 +4,7 @@ import os
 import json
 from pathlib import Path
 import time
+from urllib.parse import urlparse, parse_qs, urlencode
 
 # Directorio para caché
 CACHE_DIR = Path.home() / '.yt_downloader_cache'
@@ -45,9 +46,41 @@ def list_formats(url):
     ]
     subprocess.run(command)
 
+def clean_youtube_url(url: str) -> str:
+    """
+    Limpia una URL de YouTube para mantener solo el ID del video.
+    Remueve parámetros como 'list' e 'index' usados en playlists.
+    """
+    try:
+        # Parsear la URL
+        parsed_url = urlparse(url)
+        # Obtener los parámetros
+        params = parse_qs(parsed_url.query)
+        
+        # Verificar si existe el parámetro 'v' (ID del video)
+        if 'v' not in params:
+            return url  # Si no hay ID de video, retornar la URL original
+            
+        # Reconstruir la URL solo con el parámetro 'v'
+        clean_params = {'v': params['v'][0]}
+        clean_query = urlencode(clean_params)
+        
+        # Reconstruir la URL limpia
+        clean_url = f"https://www.youtube.com/watch?{clean_query}"
+        print(f"URL original: {url}")
+        print(f"URL limpia: {clean_url}")
+        return clean_url
+        
+    except Exception as e:
+        print(f"Error limpiando URL: {e}")
+        return url  # En caso de error, retornar la URL original
+
 def download_video(url, progress_hooks=None):
     print("\nIniciando descarga...")
     start_time = time.time()
+    
+    # Limpiar la URL antes de procesar
+    url = clean_youtube_url(url)
     
     # Configura y limpia el directorio temporal
     temp_dir = Path("temp_downloads")
