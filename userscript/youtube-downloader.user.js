@@ -39,15 +39,11 @@
     GM_addStyle(addClick);
 
     function openDownloader(url) {
-        const windowName = 'yt-downloader-window';
-        let downloaderWindow = window.open('', windowName);
+        const downloaderUrl = `http://192.168.0.115:5270/?url=${encodeURIComponent(url)}`;
+        const existingWindow = window.open(downloaderUrl, 'yt-downloader');
         
-        try {
-            downloaderWindow.localStorage; // Verifica si la ventana existe y está accesible
-            downloaderWindow.location.href = `http://192.168.0.115:5270/?url=${encodeURIComponent(url)}`;
-            downloaderWindow.focus();
-        } catch (e) {
-            downloaderWindow = window.open(`http://192.168.0.115:5270/?url=${encodeURIComponent(url)}`, windowName);
+        if (existingWindow) {
+            existingWindow.focus();
         }
     }
 
