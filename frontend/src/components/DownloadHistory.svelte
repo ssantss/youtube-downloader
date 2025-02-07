@@ -1,5 +1,6 @@
 <script>
   import { downloads } from '../stores/downloads';
+  import { flip } from 'svelte/animate';
 
   function formatDate(dateString) {
     return new Date(dateString).toLocaleString();
