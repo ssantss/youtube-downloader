@@ -9,6 +9,7 @@
   let videoInfo = null;
 
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  console.log(BACKEND_URL);
   const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
 
   $: isValidUrl = youtubeRegex.test(url);
